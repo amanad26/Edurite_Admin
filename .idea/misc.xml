@@ -3,11 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_about_us.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_admin_login.xml" value="0.33" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_course_detail.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_faq.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_privacy_policy.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_terms.xml" value="0.1" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/custom_progress_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_material.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_notification.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/internet_dialog.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_course_recycler.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_material_recycler.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_notification_recycler.xml" value="0.2" />
       </map>
     </option>
   </component>

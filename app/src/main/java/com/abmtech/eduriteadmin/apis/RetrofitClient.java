@@ -1,11 +1,15 @@
 package com.abmtech.eduriteadmin.apis;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.abmtech.eduriteadmin.R;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,43 +30,17 @@ public class RetrofitClient {
             connected = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                     connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;
             if (!connected) {
-                Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
-            }
+                final Dialog dialog = new Dialog(context);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient.Builder client = new OkHttpClient.Builder()
-                .connectTimeout(2, TimeUnit.MINUTES)
-                .readTimeout(2, TimeUnit.MINUTES);
+                dialog.setContentView(R.layout.internet_dialog);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                dialog.getWindow().setDimAmount(0.5f);
 
-//        if (BaseUrl.Development.equalsIgnoreCase(Constants.Key.Debug)) {
-        client.addInterceptor((Interceptor) interceptor);
-//        }
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BaseUrls.URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client.build())
-                .build();
-        return retrofit.create(ApiInterface.class);
-    }
-
-
-    public static ApiInterface getPaymentClient(Context context) {
-
-        try {
-            boolean connected;
-            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            //we are connected to a network
-            connected = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;
-            if (!connected) {
-                Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+                dialog.show();
+                dialog.findViewById(R.id.parent).setOnClickListener(view -> dialog.dismiss());
+//                Toast.makeText(context, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
             }
             Log.d("Connect", "getClient() called with: connected = [" + connected + "]");
         } catch (Exception e) {
@@ -74,16 +52,13 @@ public class RetrofitClient {
                 .connectTimeout(2, TimeUnit.MINUTES)
                 .readTimeout(2, TimeUnit.MINUTES);
 
-//        if (BaseUrl.Development.equalsIgnoreCase(Constants.Key.Debug)) {
-        client.addInterceptor((Interceptor) interceptor);
-//        }
+        client.addInterceptor(interceptor);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BaseUrls.PAYMENT_URL)
+                .baseUrl(BaseUrls.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client.build())
                 .build();
         return retrofit.create(ApiInterface.class);
     }
-
 }
