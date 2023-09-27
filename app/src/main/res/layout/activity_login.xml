@@ -49,12 +49,11 @@
             android:visibility="gone" />
 
         <EditText
-            android:id="@+id/phone_edit_email"
+            android:id="@+id/username_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/prompt_regular"
             android:hint="Enter Username"
-            android:inputType="number"
             android:background="@drawable/edit_background"
             android:paddingLeft="@dimen/_10sdp"
             android:paddingTop="@dimen/_10sdp"

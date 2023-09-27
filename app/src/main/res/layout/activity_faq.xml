@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/_15sdp"
     android:paddingVertical="@dimen/_5sdp"
-    tools:context=".activities.AboutUsActivity">
+    tools:context=".activities.FaqActivity">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -29,28 +29,35 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/prompt_bold"
-            android:text="Privacy Policy"
+            android:text="Faq"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_18ssp" />
+
+
+        <TextView
+            android:id="@+id/edit_faq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:background="@drawable/custom_bg_logout"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/prompt_regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:text="Add FAQ"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp" />
 
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_below="@id/header"
-        android:scrollbars="none"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/text_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="@dimen/_20sdp"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/prompt_regular"/>
-
-    </ScrollView>
-
+        android:layout_below="@id/header"
+        android:layout_marginTop="@dimen/_10ssp"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view" />
 
 </RelativeLayout>

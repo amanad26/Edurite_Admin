@@ -89,6 +89,40 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_users"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_menu_navbar"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_6sdp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/users_anim"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/text_nav_users"
+                android:padding="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:scaleType="centerCrop"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/co_walking" />
+
+            <TextView
+                android:id="@+id/text_nav_users"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="Users"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_7sdp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/rl_courses"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -138,8 +172,8 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/text_nav_settings"
                 android:padding="0dp"
-                android:scaleY="1.4"
                 android:scaleX="1.4"
+                android:scaleY="1.4"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="false"
                 app:lottie_rawRes="@raw/settings_icon" />

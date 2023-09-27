@@ -15,6 +15,7 @@ import com.abmtech.eduriteadmin.fragments.HomeFragment;
 import com.abmtech.eduriteadmin.fragments.MaterialFragment;
 import com.abmtech.eduriteadmin.fragments.NotificationFragment;
 import com.abmtech.eduriteadmin.fragments.SettingsFragment;
+import com.abmtech.eduriteadmin.fragments.UsersFragment;
 import com.airbnb.lottie.LottieProperty;
 import com.airbnb.lottie.model.KeyPath;
 
@@ -56,6 +57,12 @@ public class DashboardActivity extends AppCompatActivity {
                 frameInfo -> new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
         );
 
+        binding.usersAnim.addValueCallback(
+                new KeyPath("**"),
+                LottieProperty.COLOR_FILTER,
+                frameInfo -> new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+        );
+
         binding.settingsAnim.addValueCallback(
                 new KeyPath("**"),
                 LottieProperty.COLOR_FILTER,
@@ -78,6 +85,12 @@ public class DashboardActivity extends AppCompatActivity {
             binding.settingsAnim.playAnimation();
             changeFragment(3);
         });
+
+
+        binding.rlUsers.setOnClickListener(view -> {
+            binding.usersAnim.playAnimation();
+            changeFragment(4);
+        });
     }
 
     private void changeFragment(int position) {
@@ -97,6 +110,10 @@ public class DashboardActivity extends AppCompatActivity {
                 break;
             case 3:
                 fragment = new SettingsFragment();
+
+                break;
+            case 4:
+                fragment = new UsersFragment();
 
                 break;
             default:

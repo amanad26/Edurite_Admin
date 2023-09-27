@@ -33,6 +33,25 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_18sdp" />
 
+
+        <TextView
+            android:id="@+id/edit_faq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:background="@drawable/custom_bg_logout"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/prompt_regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp" />
+
+
     </RelativeLayout>
 
     <ScrollView

@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.abmtech.eduriteadmin"
         minSdk 21
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -60,5 +60,8 @@ dependencies {
 
 
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    // SSP
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
 
+//    implementation 'io.github.tutorialsandroid:kalertdialog:20.3.6'
 }
