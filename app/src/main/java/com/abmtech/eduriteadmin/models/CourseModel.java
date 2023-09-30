@@ -58,6 +58,9 @@ public class CourseModel {
         @SerializedName("type")
         @Expose
         private String type;
+        @SerializedName("level")
+        @Expose
+        private String level;
         @SerializedName("image")
         @Expose
         private String image;
@@ -73,6 +76,14 @@ public class CourseModel {
         @SerializedName("avg_rating")
         @Expose
         private String avgRating;
+
+        public String getLevel() {
+            return level;
+        }
+
+        public void setLevel(String level) {
+            this.level = level;
+        }
 
         public String getCourseId() {
             return courseId;

@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             android:layout_weight="1.8"
             android:scaleType="centerCrop"
+            android:id="@+id/image"
             android:src="@drawable/ic_course"
             app:riv_corner_radius="@dimen/_10sdp"
             app:riv_mutate_background="true" />

@@ -1,6 +1,7 @@
 package com.abmtech.eduriteadmin.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.abmtech.eduriteadmin.activities.AddCourseActivity;
 import com.abmtech.eduriteadmin.adapters.CourseAdapter;
 import com.abmtech.eduriteadmin.apis.ApiInterface;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
@@ -33,6 +35,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         activity = requireActivity();
+
+        binding.textHeading.setOnClickListener(view -> startActivity(new Intent(activity, AddCourseActivity.class)));
         return binding.getRoot();
     }
 
@@ -51,7 +55,10 @@ public class HomeFragment extends Fragment {
                 if (response.code() == 200) {
                     if (response.body() != null) {
                         if (response.body().getResult().equalsIgnoreCase("true")) {
-                            binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            binding.recyclerView.setLayoutManager(linearLayoutManager);
                             binding.recyclerView.setAdapter(new CourseAdapter(activity, response.body().getData()));
                         } else {
                             String message = response.body().getMsg();

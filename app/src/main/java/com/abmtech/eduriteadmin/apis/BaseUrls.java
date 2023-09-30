@@ -25,5 +25,13 @@ public class BaseUrls {
     public static final  String editPrivacy = "editPrivacy";
     public static final  String deleteCourse = "deleteCourse";
     public static final  String deleteMaterial = "deleteMaterial";
+    public static final  String AddCourseAndMaterial = "AddCourseAndMaterial";
+    public static final  String uploadImage = "uploadImage";
+    public static final  String uploadVideo = "uploadVideo";
+    public static final  String getCourseDetails = "getCourseDetails";
+    public static final  String getNotificationList = "getNotificationList";
+    public static final  String UpdateCourseAndMaterial = "UpdateCourseAndMaterial";
+    public static final  String getMaterialDetails = "getMaterialDetails";
+    public static final  String addNotification = "addNotification";
 
 }

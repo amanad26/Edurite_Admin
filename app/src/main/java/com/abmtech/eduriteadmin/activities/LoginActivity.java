@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ActivityLoginBinding;
 import com.abmtech.eduriteadmin.models.LoginModel;
 import com.abmtech.eduriteadmin.utils.ProgressDialog;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Activity activity;
     ProgressDialog pd;
     Session session;
+    String fcm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
             if (isValidate())
                 login();
         });
+
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+            String fcm_id = instanceIdResult.getToken();
+            // send it to server
+            fcm = fcm_id;
+            Log.e("refresh_tokentoken", fcm_id);
+        });
+
 
     }
 
@@ -62,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         RetrofitClient.getClient(activity).loginAdmin(
                 binding.usernameEdit.getText().toString(),
                 binding.edtPasswordCode.getText().toString(),
-                "123456789"
+                fcm
         ).enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(@NonNull Call<LoginModel> call, @NonNull Response<LoginModel> response) {

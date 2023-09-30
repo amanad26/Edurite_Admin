@@ -8,9 +8,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.abmtech.eduriteadmin.R;
 import com.abmtech.eduriteadmin.Session.Session;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -23,6 +26,16 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         activity = this;
         session = new Session(activity);
+
+
+
+//        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+//            String fcm_id = instanceIdResult.getToken();
+//            // send it to server
+//            Log.e("refresh_tokentoken", fcm_id);
+//        });
+
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
 
         new Thread(() -> {
             try {

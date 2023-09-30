@@ -51,7 +51,10 @@ public class UsersFragment extends Fragment {
                 if (response.code() == 200)
                     if (response.body() != null)
                         if (response.body().getResult().equalsIgnoreCase("true")) {
-                            binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            binding.recyclerView.setLayoutManager(linearLayoutManager);
                             binding.recyclerView.setAdapter(new UsersListAdapter(activity, response.body().getData()));
                         } else {
                             String message = response.body().getMsg();

@@ -23,6 +23,25 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_20sdp" />
 
+        <TextView
+            android:id="@+id/addMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/custom_bg_logout"
+            android:drawableLeft="@drawable/ic_baseline_add_24"
+            android:drawablePadding="@dimen/_5sdp"
+            android:fontFamily="@font/prompt_regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:text="Add Material"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp" />
+
+
         <EditText
             android:id="@+id/edt_search"
             android:layout_width="match_parent"

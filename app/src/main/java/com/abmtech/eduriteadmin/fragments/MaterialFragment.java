@@ -1,6 +1,7 @@
 package com.abmtech.eduriteadmin.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.abmtech.eduriteadmin.activities.AddCourseActivity;
+import com.abmtech.eduriteadmin.activities.AddMaterialActivity;
 import com.abmtech.eduriteadmin.adapters.MaterialListAdapter;
 import com.abmtech.eduriteadmin.apis.ApiInterface;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
@@ -34,7 +37,7 @@ public class MaterialFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMaterialBinding.inflate(inflater, container, false);
-
+        binding.addMaterial.setOnClickListener(view -> startActivity(new Intent(activity, AddMaterialActivity.class)));
         return binding.getRoot();
     }
 
@@ -45,7 +48,7 @@ public class MaterialFragment extends Fragment {
         activity = requireActivity();
         progressDialog = new ProgressDialog(activity);
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         // getMaterialList();
     }
 
@@ -63,6 +66,10 @@ public class MaterialFragment extends Fragment {
                 if (response.code() == 200) {
                     if (response.body() != null) {
                         if (response.body().getResult().equalsIgnoreCase("true")) {
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            binding.recyclerView.setLayoutManager(linearLayoutManager);
                             binding.recyclerView.setAdapter(new MaterialListAdapter(activity, response.body().getData()));
                         } else {
                             String message = response.body().getMsg();

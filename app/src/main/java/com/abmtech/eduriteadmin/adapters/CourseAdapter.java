@@ -3,6 +3,7 @@ package com.abmtech.eduriteadmin.adapters;
 import static com.abmtech.eduriteadmin.utils.Util.decodeImage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -14,12 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abmtech.eduriteadmin.R;
+import com.abmtech.eduriteadmin.activities.CourseDetailActivity;
+import com.abmtech.eduriteadmin.apis.BaseUrls;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ItemCourseRecyclerBinding;
 import com.abmtech.eduriteadmin.models.CourseModel;
 import com.abmtech.eduriteadmin.models.SignupModel;
 import com.abmtech.eduriteadmin.utils.ProgressDialog;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,9 +54,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
             holder.binding.textHeading.setText(current.getTitle());
             holder.binding.textDesc.setText(current.getDescription());
-            holder.binding.textLevel.setText(current.getType());
+            holder.binding.textLevel.setText(current.getLevel());
 
-            holder.binding.imageThumbnail.setImageBitmap(decodeImage(context, current.getImage()));
+//            holder.binding.imageThumbnail.setImageBitmap(decodeImage(context, current.getImage()));
+
+            if (!current.getImage().equalsIgnoreCase("")) {
+                Picasso.get().load(BaseUrls.IMAGE_URL + current.getImage())
+                        .into(holder.binding.imageThumbnail);
+            }
 
             holder.binding.rating.setRating(Float.parseFloat(current.getAvgRating()));
             holder.binding.textRating.setText(current.getAvgRating());
@@ -66,6 +75,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
                 deleteCourse(id);
                 return true;
             });
+
+
+            holder.itemView.setOnClickListener(view -> context.startActivity(new Intent(context, CourseDetailActivity.class)
+                    .putExtra("course_id", current.getCourseId())));
         }
     }
 

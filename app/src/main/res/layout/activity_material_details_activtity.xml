@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/prompt_bold"
-                android:text="Course Detail"
+                android:text="Material Detail"
                 android:layout_centerInParent="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20sdp" />
@@ -73,7 +73,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1.8"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_course"
+                    android:src="@drawable/ic_pdf"
                     app:riv_corner_radius="@dimen/_10sdp"
                     app:riv_mutate_background="true" />
 
@@ -170,55 +170,8 @@
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_6sdp" />
 
-            <TextView
-                android:id="@+id/text_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_desc"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_toEndOf="@id/text_total_rating"
-                android:fontFamily="@font/prompt_regular"
-                android:lineHeight="@dimen/_15sdp"
-                android:maxLines="3"
-                android:text="Intermediate"
-                android:textAlignment="textEnd"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/_8sdp" />
 
         </RelativeLayout>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/prompt_bold"
-            android:text="Materials"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:textColor="@color/text_dark_color"
-            android:textSize="@dimen/_14sdp" />
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/text_empty_material"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:fontFamily="@font/prompt_regular"
-            android:text="No Materials Currently!"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/_11sdp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:paddingHorizontal="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:id="@+id/recycler_view_materials"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
 
         <TextView
             android:layout_width="match_parent"

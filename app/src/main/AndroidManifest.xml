@@ -17,6 +17,24 @@
         android:theme="@style/Base.Theme.Edurite"
         tools:targetApi="31">
         <activity
+            android:name=".activities.SendNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MaterialDetailsActivtity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EditMaterialActivty"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EditCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddMaterialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.EditPrivacyActivity"
             android:exported="false" />
         <activity
@@ -58,6 +76,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".firebase.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".firebase.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

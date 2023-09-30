@@ -1,7 +1,6 @@
 package com.abmtech.eduriteadmin.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abmtech.eduriteadmin.R;
-import com.abmtech.eduriteadmin.activities.MaterialDetailsActivtity;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ItemMaterialRecyclerBinding;
+import com.abmtech.eduriteadmin.models.CourseDetailsModel;
 import com.abmtech.eduriteadmin.models.MaterialListModel;
 import com.abmtech.eduriteadmin.models.SignupModel;
 import com.abmtech.eduriteadmin.utils.ProgressDialog;
@@ -24,11 +23,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapter.ViewHolder> {
+public class CourseMaterialListAdapter extends RecyclerView.Adapter<CourseMaterialListAdapter.ViewHolder> {
     private final Context context;
-    private final List<MaterialListModel.Datum> data;
+    private final List<CourseDetailsModel.Data.Material> data;
 
-    public MaterialListAdapter(Context context, List<MaterialListModel.Datum> data) {
+    public CourseMaterialListAdapter(Context context, List<CourseDetailsModel.Data.Material> data) {
         this.context = context;
         this.data = data;
     }
@@ -42,7 +41,7 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (data.get(position) != null) {
-            MaterialListModel.Datum current = data.get(position);
+            CourseDetailsModel.Data.Material current = data.get(position);
 
             holder.binding.textHeading.setText(current.getMatName());
             holder.binding.textDesc.setText(current.getMatDescription());
@@ -60,26 +59,6 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
             holder.binding.rating.setRating(Float.parseFloat(current.getAvgRating()));
             holder.binding.textRating.setText(current.getAvgRating());
             holder.binding.textTotalRating.setText("(" + current.getReviewCount() + ")");
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    String id = current.getMaterialId();
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(0, data.size() - 1);
-                    data.remove(position);
-                    deleteCourse(id);
-                    return true;
-                }
-            });
-
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    context.startActivity(new Intent(context, MaterialDetailsActivtity.class)
-                            .putExtra("mat_id", current.getMaterialId()));
-                }
-            });
 
         }
 

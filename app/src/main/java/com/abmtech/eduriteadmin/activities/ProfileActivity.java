@@ -155,8 +155,11 @@ public class ProfileActivity extends AppCompatActivity {
                     if (response.body() != null) {
                         if (response.body().getResult().equalsIgnoreCase("true")) {
                             binding.textNoRating.setVisibility(View.GONE);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
                             binding.reviewRecycler.setAdapter(new ReviewListAdapter(activity, response.body().getData()));
-                            binding.reviewRecycler.setLayoutManager(new LinearLayoutManager(activity));
+                            binding.reviewRecycler.setLayoutManager(linearLayoutManager);
                         } else {
                             binding.textNoRating.setVisibility(View.VISIBLE);
                         }
