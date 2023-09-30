@@ -136,6 +136,7 @@
                 android:background="@color/view_divider" />
 
             <LinearLayout
+
                 android:id="@+id/ll_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,6 +183,7 @@
                 android:background="@color/view_divider" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/ll_change_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

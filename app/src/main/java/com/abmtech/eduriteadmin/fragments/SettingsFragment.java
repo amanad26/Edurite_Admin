@@ -41,6 +41,7 @@ public class SettingsFragment extends Fragment {
         binding.llTerms.setOnClickListener(view -> startActivity(new Intent(activity, TermsActivity.class)));
         binding.llFaq.setOnClickListener(view -> startActivity(new Intent(activity, FaqActivity.class)));
         binding.llProfileCard.setOnClickListener(view -> startActivity(new Intent(activity, ProfileActivity.class)));
+        binding.llReview.setOnClickListener(view -> startActivity(new Intent(activity, ProfileActivity.class)));
         binding.llUserProfile.setOnClickListener(view -> startActivity(new Intent(activity, ProfileActivity.class)));
         binding.textLogout.setOnClickListener(view -> session.logout());
 

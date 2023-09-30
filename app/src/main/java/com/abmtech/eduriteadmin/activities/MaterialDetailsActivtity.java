@@ -13,10 +13,12 @@ import android.widget.Toast;
 import com.abmtech.eduriteadmin.R;
 import com.abmtech.eduriteadmin.adapters.CourseReviewListAdapter;
 import com.abmtech.eduriteadmin.adapters.MaterialReviewListAdapter;
+import com.abmtech.eduriteadmin.apis.BaseUrls;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ActivityMaterialDetailsActivtityBinding;
 import com.abmtech.eduriteadmin.models.MaterialDetailsModel;
 import com.abmtech.eduriteadmin.utils.ProgressDialog;
+import com.rajat.pdfviewer.PdfViewerActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +43,7 @@ public class MaterialDetailsActivtity extends AppCompatActivity {
         binding.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(activity,EditMaterialActivty.class)
+                startActivity(new Intent(activity, EditMaterialActivty.class)
                         .putExtra("mat_id", materialId));
             }
         });
@@ -74,6 +76,9 @@ public class MaterialDetailsActivtity extends AppCompatActivity {
                             binding.textTotalRating.setText(matData.getReviewCount());
                             binding.rating.setRating(Float.parseFloat(matData.getAvgRating()));
 
+                            binding.llBody.setOnClickListener(view -> showPdf(matData.getPdfFile(), matData.getMatName()));
+
+                            binding.videoIcon.setOnClickListener(view -> showPdf(matData.getPdfFile(), matData.getMatName()));
 
                             if (data.getReviews().size() != 0) {
                                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
@@ -98,6 +103,19 @@ public class MaterialDetailsActivtity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showPdf(String file, String name) {
+
+        startActivity(
+                PdfViewerActivity.Companion.launchPdfFromUrl(
+                        this,
+                        BaseUrls.IMAGE_URL + file,
+                        name,
+                        "Edurite",
+                        false
+                )
+        );
     }
 
 }

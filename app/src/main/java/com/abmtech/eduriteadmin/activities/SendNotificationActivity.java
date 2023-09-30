@@ -1,6 +1,8 @@
 package com.abmtech.eduriteadmin.activities;
 
+import static com.abmtech.eduriteadmin.apis.BaseUrls.uploadImage;
 import static com.abmtech.eduriteadmin.utils.SendNotification.sendNotification;
+import static com.abmtech.eduriteadmin.utils.SendNotification.sendNotificationToSingleUser;
 import static com.abmtech.eduriteadmin.utils.Util.encodeImageBitmap;
 
 import androidx.annotation.NonNull;
@@ -22,17 +24,26 @@ import android.widget.Toast;
 
 import com.abmtech.eduriteadmin.R;
 import com.abmtech.eduriteadmin.adapters.UsersListAdapter;
+import com.abmtech.eduriteadmin.apis.BaseUrls;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ActivitySendNotificationBinding;
 import com.abmtech.eduriteadmin.models.SignupModel;
 import com.abmtech.eduriteadmin.models.UsersModel;
 import com.abmtech.eduriteadmin.utils.ProgressDialog;
 import com.abmtech.eduriteadmin.utils.Util;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.ANRequest;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.github.file_picker.FilePicker;
 import com.github.file_picker.FileType;
 import com.google.android.material.snackbar.Snackbar;
 import com.leo.searchablespinner.SearchableSpinner;
 import com.leo.searchablespinner.interfaces.OnItemSelectListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +71,7 @@ public class SendNotificationActivity extends AppCompatActivity {
     String selectedUserFCM = "";
     private File imageFile = null;
     private String image = "ab";
+    private boolean isImageUpload = false;
 
 
     @Override
@@ -95,6 +107,10 @@ public class SendNotificationActivity extends AppCompatActivity {
                 .setCancellable(false)
                 .setOnSubmitClickListener(files -> {
                     imageFile = files.get(0).getFile();
+                    binding.selectVideo.setText(imageFile.getName());
+                    uploadImage();
+                    binding.selectVideoTv.setVisibility(View.GONE);
+                    binding.progressVideo.setVisibility(View.VISIBLE);
                     Bitmap bitmap = null;
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(imageFile));
@@ -109,6 +125,51 @@ public class SendNotificationActivity extends AppCompatActivity {
                     }
                 })
                 .buildAndShow());
+
+    }
+
+
+    private void uploadImage() {
+        //pd.show();
+
+        ANRequest.MultiPartBuilder anAdd = AndroidNetworking.upload((BaseUrls.URL + uploadImage));
+        if (imageFile != null) anAdd.addMultipartFile("image", imageFile);
+        anAdd.setPriority(Priority.HIGH);
+        anAdd.build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        pd.dismiss();
+                        try {
+                            Log.d("---rrrProfile", "save_postsave_post" + jsonObject.toString());
+                            String result = jsonObject.getString("result");
+                            String filename = jsonObject.getString("filename");
+                            if (result.equalsIgnoreCase("true")) {
+                                image = filename;
+                                isImageUpload = false;
+                                binding.linearCircleVideo.setVisibility(View.GONE);
+                                Snackbar.make(binding.getRoot(), "image  Uploaded", Snackbar.LENGTH_LONG).show();
+                            } else {
+                                isImageUpload = false;
+                                binding.linearCircleVideo.setVisibility(View.GONE);
+                                Snackbar.make(binding.getRoot(), "image  failed to upload", Snackbar.LENGTH_LONG).show();
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.e("Error On Server ", "Error " + anError.toString());
+                        Toast.makeText(activity, "Some  Thing Went Wrong", Toast.LENGTH_SHORT).show();
+                        pd.dismiss();
+
+                    }
+                });
+
 
     }
 
@@ -145,7 +206,14 @@ public class SendNotificationActivity extends AppCompatActivity {
                             notiBody.put("title", binding.courseNameEdit.getText().toString());
                             notiBody.put("body", binding.courseDescriptionEdit.getText().toString());
 
-                            sendNotification("a", notiBody, data);
+                            data.put("image", BaseUrls.IMAGE_URL + image);
+
+                            if (selectedUserFCM.equalsIgnoreCase("")) {
+                                sendNotification("a", notiBody, data);
+                            } else {
+                                sendNotificationToSingleUser(selectedUserFCM, notiBody, data);
+                            }
+
                             Toast.makeText(activity, "Notification Sent", Toast.LENGTH_SHORT).show();
                             finish();
                         }

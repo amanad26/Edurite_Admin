@@ -45,8 +45,8 @@ public class CourseDetailActivity extends AppCompatActivity {
         binding.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(activity,EditCourseActivity.class)
-                        .putExtra("course_id",courseId));
+                startActivity(new Intent(activity, EditCourseActivity.class)
+                        .putExtra("course_id", courseId));
             }
         });
 
@@ -82,6 +82,14 @@ public class CourseDetailActivity extends AppCompatActivity {
                             if (!courseData.getImage().equalsIgnoreCase("")) {
                                 Picasso.get().load(BaseUrls.IMAGE_URL + courseData.getImage())
                                         .into(binding.imageThumbnail);
+                            }
+
+                            if (!courseData.getVideo().equalsIgnoreCase("")) {
+                                binding.videoIcon.setVisibility(View.VISIBLE);
+                                binding.videoIcon.setOnClickListener(view -> startActivity(new Intent(activity, PlayVideoActivity.class)
+                                        .putExtra("title", courseData.getTitle())
+                                        .putExtra("url", courseData.getVideo())
+                                ));
                             }
 
                             if (data.getMaterials().size() != 0) {

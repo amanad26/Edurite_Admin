@@ -1,6 +1,7 @@
 package com.abmtech.eduriteadmin.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abmtech.eduriteadmin.R;
+import com.abmtech.eduriteadmin.activities.MaterialDetailsActivtity;
 import com.abmtech.eduriteadmin.apis.RetrofitClient;
 import com.abmtech.eduriteadmin.databinding.ItemMaterialRecyclerBinding;
 import com.abmtech.eduriteadmin.models.CourseDetailsModel;
@@ -59,6 +61,9 @@ public class CourseMaterialListAdapter extends RecyclerView.Adapter<CourseMateri
             holder.binding.rating.setRating(Float.parseFloat(current.getAvgRating()));
             holder.binding.textRating.setText(current.getAvgRating());
             holder.binding.textTotalRating.setText("(" + current.getReviewCount() + ")");
+
+            holder.itemView.setOnClickListener(view -> context.startActivity(new Intent(context, MaterialDetailsActivtity.class)
+                    .putExtra("mat_id", current.getMaterialId())));
 
         }
 

@@ -9,8 +9,8 @@ android {
     defaultConfig {
         applicationId "com.abmtech.eduriteadmin"
         minSdk 21
-        targetSdk 32
-        versionCode 1
+        targetSdk 33
+        versionCode 2
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -79,4 +79,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-bom:32.2.2'
     implementation 'com.google.firebase:firebase-messaging:23.0.0'
     implementation "com.google.firebase:firebase-iid:21.1.0"
+
+    implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+
+
+    implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
+
+    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
+
 }

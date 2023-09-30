@@ -68,7 +68,7 @@ public class AddCourseActivity extends AppCompatActivity {
                 .setLimitItemSelection(1)
                 .setFileType(FileType.IMAGE)
                 .setAccentColor(Color.CYAN)
-                .setCancellable(false)
+                .setCancellable(true)
                 .setOnSubmitClickListener(files -> {
                     imageFile = files.get(0).getFile();
                     binding.selectImage.setText(imageFile.getName());
@@ -88,7 +88,7 @@ public class AddCourseActivity extends AppCompatActivity {
                 .setLimitItemSelection(1)
                 .setFileType(FileType.VIDEO)
                 .setAccentColor(Color.CYAN)
-                .setCancellable(false)
+                .setCancellable(true)
                 .setOnSubmitClickListener(files -> {
                     VideoFile = files.get(0).getFile();
                     binding.selectVideo.setText(VideoFile.getName());
@@ -214,7 +214,6 @@ public class AddCourseActivity extends AppCompatActivity {
 
                     }
                 });
-
 
     }
 

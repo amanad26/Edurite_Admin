@@ -24,6 +24,7 @@
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_material_details_activtity.xml" value="0.1859375" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_play_video.xml" value="0.1859375" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_privacy_policy.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_send_notification.xml" value="0.33" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/activity_signup.xml" value="0.2" />
@@ -33,7 +34,7 @@
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_material.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_notification.xml" value="0.2" />
-        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_settings.xml" value="0.16" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/fragment_users.xml" value="0.18" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/internet_dialog.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_course_recycler.xml" value="0.2" />
@@ -42,6 +43,8 @@
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_notification_recycler.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_review_recycler.xml" value="0.2" />
         <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/app/src/main/res/layout/item_users_recycler.xml" value="0.17604166666666668" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/custom-video-player-master/src/main/res/layout/exo_playback_control_view.xml" value="0.2" />
+        <entry key="..\:/Users/Windows 11/AndroidStudioProjects/EduriteAdmin/custom-video-player-master/src/main/res/layout/layout_video_player.xml" value="0.2" />
       </map>
     </option>
   </component>
