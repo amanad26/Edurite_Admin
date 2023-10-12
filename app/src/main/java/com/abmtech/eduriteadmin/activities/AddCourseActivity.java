@@ -63,7 +63,6 @@ public class AddCourseActivity extends AppCompatActivity {
         activity = this;
         pd = new ProgressDialog(activity);
 
-
         binding.selectImageLinear.setOnClickListener(view -> new FilePicker.Builder(this)
                 .setLimitItemSelection(1)
                 .setFileType(FileType.IMAGE)
