@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,91 +15,72 @@
         <RelativeLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:padding="@dimen/_10sdp">
+            android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/image_back"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="@dimen/_5sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerVertical="true"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingTop="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:src="@drawable/ic_back" />
 
             <TextView
+                android:paddingTop="@dimen/_5sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/prompt_bold"
                 android:text="Course Detail"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_14sdp" />
 
-            <TextView
-                android:id="@+id/edit_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="end"
-                android:background="@drawable/custom_bg_logout"
-                android:drawableLeft="@drawable/ic_baseline_add_24"
-                android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/prompt_regular"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_7sdp"
-                android:text="Edit"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_8ssp" />
 
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginVertical="@dimen/_6sdp"
-            app:cardCornerRadius="@dimen/_10sdp"
             app:cardUseCompatPadding="false">
 
             <RelativeLayout
-                android:id="@+id/ll_body"
+                android:id="@+id/rl_body"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_300sdp"
                 android:orientation="vertical">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image_thumbnail"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_200sdp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="1.8"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_course"
                     app:riv_corner_radius="@dimen/_10sdp"
                     app:riv_mutate_background="true" />
 
 
+                <androidx.media3.ui.PlayerView
+                    android:id="@+id/player_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:show_buffering="always"
+                    app:auto_show="false"
+                    app:unplayed_color="@color/light_gray"
+                    app:show_subtitle_button="true"
+                    app:scrubber_color="@color/red"
+                    app:played_color="@color/red"
+                    app:buffered_color="@color/bg_gray"
+                    app:animation_enabled="true"
+                    app:use_controller="true" />
 
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/video_icon"
-            android:visibility="gone"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="end"
-            android:layout_weight="1.8"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:layout_marginTop="-50dp"
-            android:elevation="@dimen/_5sdp"
-            android:src="@drawable/ic_baseline_play_circle_filled_24"
-            app:riv_corner_radius="@dimen/_10sdp"
-            app:riv_mutate_background="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -114,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/prompt_bold"
-                android:text="This is the Heading that can be long!!"
                 android:textColor="@color/text_dark_color"
                 android:textSize="@dimen/_13sdp" />
 
@@ -124,7 +104,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_heading"
                 android:fontFamily="@font/prompt_regular"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam blandit pulvinar justo. Phasellus luctus porta convallis. Cras ac neque risus. Nunc eu rutrum ante. Phasellus congue nulla eget faucibus consectetur. Maecenas blandit risus sit amet arcu facilisis, vel maximus erat elementum. Nulla nisl arcu, rutrum at aliquam non, euismod"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp" />
 
@@ -185,7 +164,6 @@
                 android:gravity="center"
                 android:lineHeight="@dimen/_15sdp"
                 android:maxLines="3"
-                android:text="(556)"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_6sdp" />
 
@@ -198,59 +176,36 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_toEndOf="@id/text_total_rating"
                 android:fontFamily="@font/prompt_regular"
-                android:lineHeight="@dimen/_15sdp"
                 android:maxLines="3"
-                android:text="Intermediate"
                 android:textAlignment="textEnd"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp" />
 
         </RelativeLayout>
 
-
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:fontFamily="@font/prompt_bold"
-            android:text="Materials"
-            android:textColor="@color/text_dark_color"
-            android:textSize="@dimen/_14sdp" />
-
-        <TextView
-            android:id="@+id/text_empty_material"
+            android:visibility="gone"
+            android:id="@+id/text_add_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/prompt_regular"
-            android:text="No Materials Currently!"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/_11sdp"
-            android:visibility="gone" />
+            android:text="Add Rating"
+            android:layout_gravity="start"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:background="@drawable/custom_bg_logout"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_8ssp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_materials"
+
+        <ProgressBar
+            android:id="@+id/progressbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingHorizontal="@dimen/_15sdp" />
-
+            android:layout_height="@dimen/_30sdp" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:fontFamily="@font/prompt_bold"
-            android:text="Ratings"
-            android:textColor="@color/text_dark_color"
-            android:textSize="@dimen/_14sdp" />
-
-
-        <TextView
-            android:id="@+id/text_empty_rating"
+            android:id="@+id/text_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -258,17 +213,14 @@
             android:fontFamily="@font/prompt_regular"
             android:text="No Ratings Currently!"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/_11sdp"
-            android:visibility="gone" />
-
+            android:textSize="@dimen/_11sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_15sdp" />
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

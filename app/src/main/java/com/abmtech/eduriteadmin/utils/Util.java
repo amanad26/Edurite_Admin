@@ -16,6 +16,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Util {
 
+
+    public  static  String APIKEY = "key=AAAAujWclzw:APA91bEoWTPHDukwUKww-9DWlJyxpI5B9U48-GEy7S0Lx4DdT4Wd_ubRX7V2BhloMepN5tEUons3IEf98sN1Pwh9ym9N-Zv7L3sCXKfvWQdtoiIN-O0ix9BQMm2YhV58guJDD9dcba8w";
+
     public static String encodeImageBitmap(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);

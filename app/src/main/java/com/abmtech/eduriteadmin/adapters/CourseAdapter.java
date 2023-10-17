@@ -2,6 +2,7 @@ package com.abmtech.eduriteadmin.adapters;
 
 import static com.abmtech.eduriteadmin.utils.Util.decodeImage;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -68,11 +69,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             holder.binding.textTotalRating.setText("(" + current.getReviewCount() + ")");
 
             holder.itemView.setOnLongClickListener(view -> {
-                String id = current.getCourseId();
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(0, models.size() - 1);
-                models.remove(position);
-                deleteCourse(id);
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete Course")
+                        .setMessage("Are you sure you want to delete this course")
+                        .setPositiveButton("Yes", (dialogInterface, i) -> {
+                            String id = current.getCourseId();
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(0, models.size() - 1);
+                            models.remove(position);
+                            deleteCourse(id);
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .create()
+                        .show();
+
                 return true;
             });
 

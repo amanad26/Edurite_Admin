@@ -393,7 +393,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:fontFamily="@font/prompt_regular"
-                    android:text="Frequently Asked Questions"
+                    android:text="Q.A"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
 

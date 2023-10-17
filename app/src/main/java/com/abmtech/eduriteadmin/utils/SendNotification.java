@@ -1,5 +1,7 @@
 package com.abmtech.eduriteadmin.utils;
 
+import static com.abmtech.eduriteadmin.utils.Util.APIKEY;
+
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -55,7 +57,7 @@ public class SendNotification {
         ApiInterface apiService = retrofit.create(ApiInterface.class);
 
         apiService.sendNotification(
-                "key=AAAAp4oSRqs:APA91bGNVt5FtxxsohN5DwvcCAwRql9vt4ccQHbHYCjHs6Dyfjq1aWcAmR0F8lrzhQleiJX5kyOEF6LgNr5YX07EbfgzaYavEuArwy9UYwo5vXrgR4n77NKzOx2JADApkILgRHZM6-ZN\t",
+                APIKEY,
                 "application/json",
                 map).enqueue(new Callback<NotiModel>() {
             @Override
@@ -103,7 +105,7 @@ public class SendNotification {
         ApiInterface apiService = retrofit.create(ApiInterface.class);
 
         apiService.sendNotification(
-                "key=AAAAp4oSRqs:APA91bGNVt5FtxxsohN5DwvcCAwRql9vt4ccQHbHYCjHs6Dyfjq1aWcAmR0F8lrzhQleiJX5kyOEF6LgNr5YX07EbfgzaYavEuArwy9UYwo5vXrgR4n77NKzOx2JADApkILgRHZM6-ZN\t",
+                APIKEY,
                 "application/json",
                 map).enqueue(new Callback<NotiModel>() {
             @Override
